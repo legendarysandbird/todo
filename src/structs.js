@@ -1,3 +1,5 @@
+import {showTasks} from "./tasks";
+
 export let task = (title, desc, dueDate, priority) => {
     let info = {title,
                 desc,
@@ -127,6 +129,10 @@ export let project = (container, title) => {
 
         project.appendChild(text);
         project.appendChild(remove);
+
+        project.onclick = () => {
+            showTasks()
+        }
 
         parent.appendChild(project); 
     }
