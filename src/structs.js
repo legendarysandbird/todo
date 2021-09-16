@@ -36,7 +36,7 @@ export let task = (title, desc, dueDate, priority) => {
         info.priority = prio;
     }
 
-    const display = (parent) => {
+    const display = (parent, container) => {
         const task = document.createElement("div");
         const check = document.createElement("input");
         check.type = "checkbox";
@@ -44,6 +44,15 @@ export let task = (title, desc, dueDate, priority) => {
         text.textContent = info.title;
         const remove = document.createElement("button");
         remove.textContent = "X";
+
+        remove.onclick = () => {
+            parent.removeChild(task);
+            for (let i = 0; i < container.length; i++) {
+                if (container[i].getTitle() == info.title) {
+                    container.splice(i, 1);
+                }
+            }
+        }
 
         task.classList.add("task");
         check.classList.add("check");
@@ -94,10 +103,11 @@ export let project = (container, title) => {
         info.tasks.push(task);
     }
 
-    const removeTask = (task) => {
-        const index = info.tasks.indexOf(task);
-        if (index != -1) {
-            info.tasks.splice(index, 1);
+    const removeTask = (title) => {
+        for (let i = 0; i < info.tasks.length; i++) {
+            if (info.tasks[i].title == title) {
+                info.tasks.splice(i, 1);
+            }
         }
     }
 
@@ -132,7 +142,7 @@ export let project = (container, title) => {
 
     const displayTasks = (parent) => {
         info.tasks.forEach((task) => {
-            task.display(parent);
+            task.display(parent, info.tasks);
         })
     }
 

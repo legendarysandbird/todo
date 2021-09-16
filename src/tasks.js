@@ -20,7 +20,7 @@ export default function showTasks(project) {
 
         let t1 = task(title, desc, due, prio);
         project.addTask(t1);
-        t1.display(taskBox);
+        project.displayTasks(taskBox);
 
         showTasks(project);
     }
