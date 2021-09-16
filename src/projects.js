@@ -1,21 +1,21 @@
 import {project} from "./structs";
 
-const content = document.getElementById("content");
+const projectBox = document.getElementById("projects");
 
 export default function showProjects(projects) {
-    content.innerHTML = '';
+    projectBox.innerHTML = '';
 
     const create = document.createElement("button");
     create.textContent = "Add Project";
-    content.appendChild(create);
+    projectBox.appendChild(create);
 
     projects.forEach(project => {
-       project.display(content);
+       project.display(projectBox);
     })
 
     create.onclick = () => {
         let title = prompt("Enter project name");
-        projects.push(project(title));
+        projects.push(project(projects, title));
         showProjects(projects);
     }
 }

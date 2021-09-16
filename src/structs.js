@@ -73,8 +73,9 @@ export let task = (title, desc, dueDate, priority) => {
     };
 }
 
-export let project = (title) => {
+export let project = (container, title) => {
     let info = {
+        container,
         title,
         tasks: [] 
     };
@@ -118,8 +119,13 @@ export let project = (title) => {
         parent.appendChild(task); 
     }
 
-    const hide = (parent, child, elements) => {
+    const hide = (parent, child) => {
         parent.removeChild(child);
+        for (let i = 0; i < info.container.length; i++) {
+            if (info.container[i].getTitle() == info.title) {
+                info.container.splice(i, 1);
+            }
+        }
     }
 
     return {
