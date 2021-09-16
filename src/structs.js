@@ -38,10 +38,12 @@ export let task = (title, desc, dueDate, priority) => {
 
     const display = (parent) => {
         const task = document.createElement("div");
-        const check = document.createElement("button");
+        const check = document.createElement("input");
+        check.type = "checkbox";
         const text = document.createElement("p");
         text.textContent = info.title;
         const remove = document.createElement("button");
+        remove.textContent = "X";
 
         task.classList.add("task");
         check.classList.add("check");
@@ -89,7 +91,7 @@ export let project = (container, title) => {
     }
 
     const addTask = (task) => {
-        info.tasks.push(item);
+        info.tasks.push(task);
     }
 
     const removeTask = (task) => {
@@ -128,12 +130,19 @@ export let project = (container, title) => {
         }
     }
 
+    const displayTasks = (parent) => {
+        info.tasks.forEach((task) => {
+            task.display(parent);
+        })
+    }
+
     return {
         getTitle,
         setTitle,
         addTask,
         removeTask,
         display,
-        hide
+        hide,
+        displayTasks
     }
 }
