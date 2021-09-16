@@ -1,6 +1,4 @@
-import {task, project} from "./structs.js";
+import showProjects from "./projects";
 
-t1 = task("hello", "desc", "12/2", 1);
-p1 = project("Default");
-
-p1.addTask(t1);
+let projects = [];
+showProjects(projects);

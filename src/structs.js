@@ -36,6 +36,29 @@ export let task = (title, desc, dueDate, priority) => {
         info.priority = prio;
     }
 
+    const display = (parent) => {
+        const task = document.createElement("div");
+        const check = document.createElement("button");
+        const text = document.createElement("p");
+        text.textContent = info.title;
+        const remove = document.createElement("button");
+
+        task.classList.add("task");
+        check.classList.add("check");
+        text.classList.add("text");
+        remove.classList.add("remove")
+
+        task.appendChild(check);
+        task.appendChild(text);
+        task.appendChild(remove);
+
+        parent.appendChild(task); 
+    }
+
+    const hide = (element) => {
+        element.remove();
+    }
+
     return {
         getTitle,
         getDesc,
@@ -44,12 +67,14 @@ export let task = (title, desc, dueDate, priority) => {
         setTitle,
         setDesc,
         setDueDate,
-        setPriority
+        setPriority,
+        display,
+        hide
     };
 }
 
 export let project = (title) => {
-    info = {
+    let info = {
         title,
         tasks: [] 
     };
@@ -73,10 +98,36 @@ export let project = (title) => {
         }
     }
 
+    const display = (parent) => {
+        const task = document.createElement("div");
+        const text = document.createElement("p");
+        text.textContent = info.title;
+        const remove = document.createElement("button");
+        remove.textContent = "Delete";
+        remove.onclick = () => {
+            hide(parent, task);
+        }
+
+        task.classList.add("task");
+        text.classList.add("text");
+        remove.classList.add("remove")
+
+        task.appendChild(text);
+        task.appendChild(remove);
+
+        parent.appendChild(task); 
+    }
+
+    const hide = (parent, child, elements) => {
+        parent.removeChild(child);
+    }
+
     return {
         getTitle,
         setTitle,
         addTask,
-        removeTask
+        removeTask,
+        display,
+        hide
     }
 }
