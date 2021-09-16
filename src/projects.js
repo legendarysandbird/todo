@@ -6,7 +6,8 @@ export default function showProjects(projects) {
     projectBox.innerHTML = '';
 
     const create = document.createElement("button");
-    create.textContent = "Add Project";
+    create.textContent = "+";
+    create.classList.add("create");
     projectBox.appendChild(create);
 
     projects.forEach(project => {

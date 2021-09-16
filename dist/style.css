@@ -1,0 +1,53 @@
+.create {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    background-color: lightgreen;
+    border-radius: 25%;
+}
+
+.project {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.remove {
+    height: 30px;
+    width: 30px;
+    background-color: red;
+    font-size: 20px;
+    border-radius: 50%;
+}
+
+.text {
+    font-size: 20px;
+}
+
+.project:hover {
+    background-color: darkslategrey;
+}
+
+#projects {
+    background-color: gray;
+    height: 100%;
+    width: 30%;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    text-align: center;
+}
+
+#tasks {
+    background-color: lightgray;
+    height: 100%;
+    width: 70%;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+}
+
+#content {
+    display: flex;
+    height: 800px;
+}

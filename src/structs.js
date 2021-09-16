@@ -100,23 +100,23 @@ export let project = (container, title) => {
     }
 
     const display = (parent) => {
-        const task = document.createElement("div");
+        const project = document.createElement("div");
         const text = document.createElement("p");
         text.textContent = info.title;
         const remove = document.createElement("button");
-        remove.textContent = "Delete";
+        remove.textContent = "X";
         remove.onclick = () => {
-            hide(parent, task);
+            hide(parent, project);
         }
 
-        task.classList.add("task");
+        project.classList.add("project");
         text.classList.add("text");
         remove.classList.add("remove")
 
-        task.appendChild(text);
-        task.appendChild(remove);
+        project.appendChild(text);
+        project.appendChild(remove);
 
-        parent.appendChild(task); 
+        parent.appendChild(project); 
     }
 
     const hide = (parent, child) => {
